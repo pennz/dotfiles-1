@@ -1,44 +1,133 @@
+[init]
+    templatedir = ~/.git_template/template
 [user]
-	name = Oliver Caldwell
-	email = ollie@oli.me.uk
-	signingkey = "6DFA695F73832EF9DC0335C5D85B96510F2C8A64"
-[core]
-	editor = nvim
-	excludesfile = ~/.gitexcludes
+    email = fireflysuccess@gmail.com
+    name = Vincent Zhou
+    signingkey = 3FCEC9A87E8D419A
 [color]
-	ui = true
-[push]
-	default = simple
-[merge]
-	tool = vimdiff
-[mergetool]
-	prompt = true
-	keepBackup = false
-[mergetool "vimdiff"]
-	cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+    branch = auto
+    diff = auto
+    grep = auto
+    interactive = auto
+    pager = true
+    showbranch = auto
+    status = auto
+    ui = auto
+    decorate = auto
+[color "branch"]
+    current = yellow reverse
+    local = green
+    remote = red
+    plain = cyan
+[color "diff"]
+    frag = magenta
+    meta = yellow
+    old = red bold
+    new = green bold
+    whitespace = red
+    commit = yellow
+    plain = normal
+[color "interactive"]
+    header = yellow bold
+    help = red bold
+    prompt = cyan bold
+    error = magenta bold
+[color "status"]
+    added = yellow bold
+    changed = green bold
+    header = normal
+    untracked = cyan
+    nobranch = red bold
+[color "decorate"]
+    branch = green bold
+    remoteBranch = red bold
+    tag = magenta bold
+    stash = magenta bold
+    HEAD = cyan bold
+[core]
+    editor = vi -u NONE
+    whitespace = trailing-space,space-before-tab
+    autocrlf = input
+    excludesfile = ~/.gitignore
 [alias]
-	s = status -sb
-	sw = switch
-	b = branch
-	c = commit -v
-	a = add
-	re = restore
-	l = pull
-	p = push
-	f = fetch
-	mt = mergetool
-	m = merge
-	r = rebase
-	lg = log --stat
-	d = diff
+# https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases
+    hook = "!$(git config --path --get init.templatedir)/../update.sh && $(git config --path --get init.templatedir)/configure.sh"
+    aa = add --all
+    ap = add --patch
+    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+    ci = commit -v
+    co = checkout
+    pf = push --force-with-lease
+    ca = commit --allow-empty
+    cc = cherry-pick --continue
+    cs = cherry-pick --skip
+    mt = mergetool
+    st = status
+    logp = log --pretty=oneline --graph --decorate=full
+    logt = log --pretty=oneline --graph --topo-order
+    logd = log --pretty=oneline --graph --date-order
+    loga = log --oneline --decorate=full
+    lg1 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    lg2 = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    lg = !"git lg1"
+    root = rev-parse --show-toplevel
+# https://gist.github.com/EQuimper/d875df92ef0ddaabf00636c90dbc9d25
+    la = !"git config -l | grep alias | cut -c 7-"
+l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+
+    a = add
+    c = commit --verbose
+    ca = commit -a --verbose
+    cm = commit -m
+    cam = commit -a -m
+    m = commit --amend --verbose
+    
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+
+    s = status -s
+    co = checkout
+    cob = checkout -b
+    # list branches sorted by last modified
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+    f = "!git push -u origin $(git branch --show-current)"
+
+[format]
+    pretty = fuller
+[gui]
+    commitmsgwidth = 0
+[merge]
+    ff = no
+    log = true
+    tool = diffconflicts
+    branchdesc = true
+[mergetool "diffconflicts"]
+    cmd = diffconflicts vim $BASE $LOCAL $REMOTE $MERGED
+    trustExitCode = true
+[mergetool]
+    keepBackup = false
+[fetch]
+  prune = true
+[push]
+    default = simple
+[rebase]
+  autosquash = true
+[diff "localizablestrings"]
+    textconv = "iconv -f utf-16 -t utf-8"
+[diff "utf16"]
+    textconv = "iconv -f utf-16 -t utf-8"
+[gpg]
+    program = gpg
 [commit]
-	gpgsign = true
-[pull]
-	rebase = true
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    gpgsign = true
+    template = ~/.gitmessage
 [include]
-	path = ~/.gitconfig_local
+    path = ~/.gitconfig.local
+[pull]
+    rebase = false
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true

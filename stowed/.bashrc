@@ -1,4 +1,6 @@
 export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+export TERMINAL=sakura
+#export LANGUAGE="en"
 
 if command -v apt-get &> /dev/null; then
   export LOCALE_ARCHIVE=$HOME/.nix-profile/lib/locale/locale-archive
