@@ -4,6 +4,12 @@
 # Uppercase (Λ) if ahead of the remote.
 
 function fish_prompt
+   set -l nix_shell_info (
+     if test -n "$IN_NIX_SHELL"
+       echo -n "<nix-shell> "
+     end
+   )
+
   if is_status_okay
     set_color green
   else
