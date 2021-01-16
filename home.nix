@@ -11,6 +11,11 @@ let
     enableSoundSense = false;
     enableStoneSense = false;
   };
+
+  nativeI3lock = pkgs.writers.writeBashBin "i3lock" ''
+    PATH=/usr/bin:${pkgs.i3lock}/bin i3lock "$@"
+  '';
+
 in
 {
   programs.home-manager.enable = true;
@@ -20,6 +25,8 @@ in
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    tmux
+    pstree
     asciinema
     bat
     clojure
@@ -63,9 +70,8 @@ in
     firefox
     gimp
     glibcLocales
-    i3lock
-    i3status
-    kitty
+    #i3lock
+    #i3status
     lastpass-cli
     networkmanagerapplet
     noto-fonts
