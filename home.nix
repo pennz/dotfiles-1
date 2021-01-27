@@ -4,7 +4,7 @@ let
   dag = config.lib.dag;
   unstable = import (fetchTarball https://nixos.org/channels/nixos-unstable/nixexprs.tar.xz) {};
   thunar = pkgs.xfce.thunar.override { thunarPlugins = [pkgs.xfce.thunar-archive-plugin]; };
-  python = pkgs.python3.withPackages (ps: with ps; [ pynvim ]);
+  python = pkgs.python3.withPackages (ps: with ps; [ youtube-dl pynvim ]);
   dwarf-fortress = unstable.dwarf-fortress-packages.dwarf-fortress-full.override {
     enableIntro = false;
     enableSound = false;
@@ -64,6 +64,7 @@ in
 
     # Heavy GUI based things.
     # May want to comment these out in headless environments.
+    #fbida
     baobab
     dwarf-fortress
     fira-code
@@ -87,6 +88,7 @@ in
     xclip
     xfce.xfce4-screenshooter
     xss-lock
+    mpv
   ];
 
   home.activation.stow = dag.entryAfter [ "writeBoundary" ] ''

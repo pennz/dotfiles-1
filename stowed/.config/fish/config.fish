@@ -1,7 +1,7 @@
 set -gx NPM_PACKAGES "$HOME/.npm-packages"
 set -gx JANET_PATH ~/.cache/janet
 set -gx NODE_PATH "$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
-set -gx PATH ~/bin ~/npm-packages/bin ~/.cargo/bin ~/.luarocks/bin $PATH
+set -gx PATH ~/bin ~/npm-packages/bin ~/.cargo/bin ~/.luarocks/bin ~/.local/bin $PATH
 set -gx DISPLAY :0
 set -gx LOCALE_ARCHIVE (nix-build '<nixpkgs>' -A glibcLocales)/lib/locale/locale-archive # fix locale prolem for nix pkgs, reference https://unix.stackexchange.com/questions/187402/nix-package-manager-perl-warning-setting-locale-failed
 
