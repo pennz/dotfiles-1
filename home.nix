@@ -60,6 +60,7 @@ in
     unstable.racket
     unzip
     xmlformat
+    weechat
 
     # Heavy GUI based things.
     # May want to comment these out in headless environments.
