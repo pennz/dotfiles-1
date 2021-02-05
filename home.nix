@@ -26,6 +26,7 @@ in
 
   home.packages = with pkgs; [
     tmux
+    pv
     pstree
     asciinema
     bat
@@ -38,6 +39,7 @@ in
     fish
     gcc
     git
+    gitflow
     gnumake
     htop
     httpie
