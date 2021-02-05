@@ -79,9 +79,7 @@ in
     noto-fonts-cjk
     noto-fonts-emoji
     rofi
-    spotify
     thunar
-    unstable.discord
     unstable.love_11
     unstable.obs-studio
     xclip
