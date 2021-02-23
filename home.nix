@@ -12,14 +12,16 @@ let
 in
 {
   programs.home-manager.enable = true;
-  home.stateVersion = "20.03";
-
+  home.stateVersion = "20.09";
+  home.homeDirectory = "/home/pengyu";
+  home.username = "pengyu";
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.allowUnsupportedSystem = true;
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
     tmux
+    pv
     pstree
     asciinema
     bat
@@ -32,7 +34,7 @@ in
     fish
     gcc
     git
-    tig
+    gitflow
     gnumake
     htop
     httpie
