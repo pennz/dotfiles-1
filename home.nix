@@ -82,7 +82,6 @@ in
     noto-fonts-cjk
     noto-fonts-emoji
     rofi
-    spotify
     thunar
     unstable.obs-studio
     xclip
