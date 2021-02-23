@@ -19,8 +19,9 @@ let
 in
 {
   programs.home-manager.enable = true;
-  home.stateVersion = "20.03";
-
+  home.stateVersion = "20.09";
+  home.homeDirectory = "/home/pengyu";
+  home.username = "pengyu";
   nixpkgs.config.allowUnfree = true;
   fonts.fontconfig.enable = true;
 
@@ -76,7 +77,6 @@ in
     glibcLocales
     #i3lock
     #i3status
-    lastpass-cli
     networkmanagerapplet
     noto-fonts
     noto-fonts-cjk
@@ -84,8 +84,6 @@ in
     rofi
     spotify
     thunar
-    unstable.discord
-    unstable.love_11
     unstable.obs-studio
     xclip
     xfce.xfce4-screenshooter
