@@ -28,6 +28,7 @@ in
   home.packages = with pkgs; [
     tmux
     pv
+    ctags
     pstree
     asciinema
     bat
@@ -69,14 +70,14 @@ in
     # May want to comment these out in headless environments.
     #fbida
     baobab
-    dwarf-fortress
     fira-code
     fira-code-symbols
     firefox
     gimp
     glibcLocales
-    #i3lock
-    #i3status
+    i3-gaps
+    i3lock
+    i3status
     networkmanagerapplet
     noto-fonts
     noto-fonts-cjk
