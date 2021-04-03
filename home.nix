@@ -20,6 +20,7 @@ in
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
+    ctags
     tmux
     pv
     pstree
@@ -32,9 +33,11 @@ in
     entr
     feh
     fish
+    zsh
     gcc
     git
     gitflow
+    tig
     gnumake
     htop
     httpie
@@ -50,6 +53,7 @@ in
     stow
     tree
     unstable.fzf
+    unstable.neovim
     unstable.janet
     unstable.luajit
     unstable.luarocks
